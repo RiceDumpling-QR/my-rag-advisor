@@ -1,5 +1,5 @@
 from langchain_core.prompts import PromptTemplate
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 
 def generate_response(query, context):
@@ -16,7 +16,6 @@ def generate_response(query, context):
     prompt = PromptTemplate(input_variables = ["question", "context"], 
                             template = tpl)
     filled_prompt = prompt.format(question = query, context = context)
-
 
     response = model.invoke(filled_prompt).content
     

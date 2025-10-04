@@ -22,17 +22,20 @@ def main():
 
     # format and attach the source
     sources = ""
-    i = 0
+    i = 1
     for doc, _ in results:
         source = doc.metadata.get("source", None)
         exerpt = doc.page_content[:200]
-        reference = f'[${i}]from \"${exerpt}\" in ${source}'
-        sources.append(reference)
+        reference = f'[{i}] from \"{exerpt}\" in {source}'
+        sources += reference
         i += 1
 
     print("Here is the response!\n")
     print(response)
     print("sources: \n", sources)
+
+if __name__ == "__main__":
+    main()
 
 
 
