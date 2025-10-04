@@ -1,5 +1,5 @@
 from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
+from langchain.chat_models import ChatOpenAI
 
 
 def generate_response(query, context):

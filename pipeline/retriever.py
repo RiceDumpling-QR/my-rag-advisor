@@ -14,6 +14,4 @@ def retriever(query_text):
         context += "\n"
         context += document.page_content
     
-    # print(context)
-    
     return (context, results)

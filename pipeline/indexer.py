@@ -3,27 +3,18 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 import os
 import shutil
-from pathlib import Path
 from langchain_openai import OpenAIEmbeddings
-from langchain_community.document_loaders import PyPDFLoader
 
 
-
-DATA_PATH = "../data"
+DATA_PATH = "data"
 CHROMA_PATH = "my_vector_db"
 open_ai_key = os.environ["OPEN_AI_API_KEY"]
 
+
 def indexer():
 
-    folder = Path(DATA_PATH)
-    documents = []
-
-    for pdf_path in folder.glob("*.pdf"):
-        loader = PyPDFLoader(str(pdf_path))
-        documents.extend(loader.load()) 
-
-    # loader = PyPDFLoader(DATA_PATH, glob = "*.pdf")
-    # documents = loader.load()
+    loader = DirectoryLoader(DATA_PATH, glob = "*.pdf")
+    documents = loader.load()
 
     spliter = RecursiveCharacterTextSplitter(
         chunk_size = 300,
@@ -36,7 +27,6 @@ def indexer():
         shutil.rmtree(CHROMA_PATH)
         
     db = Chroma.from_documents(chunks, 
-                               embedding = OpenAIEmbeddings(), 
+                               embedding_function = OpenAIEmbeddings(), 
                                persist_directory = CHROMA_PATH)
-    # db.persist()
-    # print("loaded!")
+    db.persist()

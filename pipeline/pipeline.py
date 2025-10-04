@@ -14,8 +14,6 @@ def main():
     args = parser.parse_args()
     query = args.query_text
 
-    # print("have query!")
-
     # Step3: use the query to fetch relevant context from the vector db
     context, results = retriever(query)
 
@@ -24,21 +22,17 @@ def main():
 
     # format and attach the source
     sources = ""
-    i = 1
+    i = 0
     for doc, _ in results:
         source = doc.metadata.get("source", None)
         exerpt = doc.page_content[:200]
-        reference = f'[{i}] from \"{exerpt}\" in {source}\n'
-        sources += reference
+        reference = f'[${i}]from \"${exerpt}\" in ${source}'
+        sources.append(reference)
         i += 1
 
     print("Here is the response!\n")
     print(response)
     print("sources: \n", sources)
-
-if __name__ == "__main__":
-    main()
-
 
 
 
