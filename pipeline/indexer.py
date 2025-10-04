@@ -32,7 +32,6 @@ def indexer():
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
         
-    db = Chroma.from_documents(chunks, 
-                               embedding = OpenAIEmbeddings(), 
-                               persist_directory = CHROMA_PATH)
-    # db.persist()
+    Chroma.from_documents(chunks, 
+                        embedding = OpenAIEmbeddings(), 
+                        persist_directory = CHROMA_PATH)
