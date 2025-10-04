@@ -15,6 +15,7 @@ pip install -r requirements.txt
 2. Run pipeline.py with the command 
 
 ```sh
+cd pipeline
 python3 pipeline.py "The question I want to ask"
 ```
 

@@ -30,7 +30,7 @@ def main():
     for doc, _ in results:
         source = doc.metadata.get("source", None)
         exerpt = doc.page_content[:200]
-        reference = f'[{i}] from \"{exerpt}\" in {source}'
+        reference = f'[{i}] from \"{exerpt}\" in {source}...\n'
         sources += reference
         i += 1
 
