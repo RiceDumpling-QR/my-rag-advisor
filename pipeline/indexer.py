@@ -8,19 +8,27 @@ from pathlib import Path
 from langchain_openai import OpenAIEmbeddings
 
 
-DATA_PATH = "../data"
+
 CHROMA_PATH = "my_vector_db"
 open_ai_key = os.environ["OPENAI_API_KEY"]
 
 
 def indexer():
 
-    folder = Path(DATA_PATH)
-    documents = []
+    pdf_path = "../data/pdf"
+    pdf_file_path = Path(pdf_path)
+    pdf_docs = []
 
-    for pdf_path in folder.glob("*.pdf"):
-        loader = PyPDFLoader(str(pdf_path))
-        documents.extend(loader.load())
+    for pdf_path in pdf_file_path.glob("*.pdf"):
+        pdf_loader = PyPDFLoader(str(pdf_path))
+        pdf_docs.extend(pdf_loader.load())
+    
+    md_file_path = "../data/md"
+
+    md_loader = DirectoryLoader(md_file_path, glob = "*.md")
+    md_docs = md_loader.load()
+
+    documents = pdf_docs + md_docs
 
     spliter = RecursiveCharacterTextSplitter(
         chunk_size = 300,

@@ -5,7 +5,7 @@ import argparse
 
 def main():
     # Step1: index the raw documents into the vector db 
-    # indexer()
+    indexer()
 
     # Step2: fetch the query from termial command 
     # Will be replaced with actual frontend in industrial practice
