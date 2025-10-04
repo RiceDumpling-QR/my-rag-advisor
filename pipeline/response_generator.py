@@ -7,9 +7,10 @@ def generate_response(query, context):
     model = ChatOpenAI(model = "gpt-4", temperature = 0.7)
     
     if not context:    
-        print("This query is not relevant to the context.\n")
+        print("This query is not relevant to the context.")
         print("fetching response from general knowledge ... response: ", 
-                model.invoke(query))
+                model.invoke(query).content)
+        return
         
     # if we have both context and theory then use the built in to buil up prompt
     tpl = "Ask {question} using the context {context}"

@@ -5,7 +5,7 @@ import argparse
 
 def main():
     # Step1: index the raw documents into the vector db 
-    indexer()
+    # indexer()
 
     # Step2: fetch the query from termial command 
     # Will be replaced with actual frontend in industrial practice
@@ -15,6 +15,10 @@ def main():
     query = args.query_text
 
     # Step3: use the query to fetch relevant context from the vector db
+    if not retriever(query):
+        generate_response(query, None)
+        return
+
     context, results = retriever(query)
 
     # Step4: Generate and refine the final response and print it out 
