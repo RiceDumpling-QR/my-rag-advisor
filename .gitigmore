@@ -1,3 +1,3 @@
 venv/
-pipeline/my_vector_db
-pipeline/pycache
+pipeline/my_vector_db/
+pipeline/__pycache__/
