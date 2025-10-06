@@ -21,7 +21,7 @@ This project is a RAG chatbot agent for influencer. If you are a new influencer 
 
 3. Reset the database when you add new files
 
-    When new files are added to data, you want to run the page with ```-r``` to reset the database.
+    When new files are added to data, you want to run the page with ```-r``` to reset the database. (This may take a while depending on the size of your database)
     ```sh
     python3 pipeline.py -r "The question I want to ask"
     ```
