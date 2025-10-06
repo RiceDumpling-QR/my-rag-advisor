@@ -8,16 +8,23 @@ This project is a RAG chatbot agent for influencer. If you are a new influencer 
 
 1. Install all necessary requirements
 
-```sh
-pip install -r requirements.txt
-```
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-2. Run pipeline.py with the command 
+2. Run ```pipeline.py``` with the command 
 
-```sh
-cd pipeline
-python3 pipeline.py "The question I want to ask"
-```
+    ```sh
+    cd pipeline
+    python3 pipeline.py "The question I want to ask"
+    ```
+
+3. Reset the database when you add new files
+
+    When new files are added to data, you want to run the page with ```-r``` to reset the database.
+    ```sh
+    python3 pipeline.py -r "The question I want to ask"
+    ```
 
 
 ## Results

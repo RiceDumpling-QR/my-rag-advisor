@@ -11,9 +11,10 @@ def generate_response(query, context):
         print("fetching response from general knowledge ... response: ", 
                 model.invoke(query).content)
         return
-        
+
+
     # if we have both context and theory then use the built in to buil up prompt
-    tpl = "Ask {question} using the context {context}"
+    tpl = "Answer the {question} using the context {context}. Provide a concise answer less than 200 words."
     prompt = PromptTemplate(input_variables = ["question", "context"], 
                             template = tpl)
     filled_prompt = prompt.format(question = query, context = context)
